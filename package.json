@@ -9,13 +9,13 @@
     "test": "jest",
     "coverage": "npm test -- --coverage",
     "postcoverage": "opn coverage/lcov-report/index.html",
-    "lint": "eslint src src-clean test .storybook webpack.config.js",
+    "lint": "eslint src src-clean test .storybook webpack",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "dev": "npm run env:dev -- webpack-dev-server --progress",
+    "dev": "npm run env:dev -- webpack-dev-server --progress --config webpack/webpack.config.js",
     "build:clean": "rimraf \"dist/!(.git*|Procfile)**\"",
     "build:copy": "copyfiles -u 1 public/* public/**/* dist",
     "prebuild": "npm run build:clean && npm run build:copy",
-    "build": "npm run env:prod -- webpack --progress"
+    "build": "npm run env:prod -- webpack --progress --config webpack/webpack.config.js"
   },
   "jest": {
     "modulePathIgnorePatterns": [
@@ -71,6 +71,7 @@
     "lodash": "^4.17.4",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
+    "react-hot-loader": "3.0.0-beta.6",
     "react-modal": "^1.6.5",
     "react-router": "^3.0.0",
     "styled-components": "^1.2.1",
